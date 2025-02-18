@@ -3,9 +3,6 @@ import datetime as dt
 import xmltodict
 import pandas as pd
 
-DATA_FOLDER = Path('../data/')
-
-
 def read_eml(path):
 
     """Convert EML file to dictionary"""
@@ -276,9 +273,14 @@ def create_candidate_list():
 
 if __name__ == '__main__':
 
-    FOLDER_NAME = input('Election subfolder: ')
-    SOURCE = DATA_FOLDER / FOLDER_NAME
-    TARGET = DATA_FOLDER / 'csv' / FOLDER_NAME
+    SOURCE = input('Path to eml data files folder: ')
+    TARGET = input('Path to output folder: ')
+
+    CONFIRM = input(f'Reading data files from {Path.resolve(SOURCE)}, and storing processed .csv files in {Path.resolve(TARGET)}.\n\nIs this correct? ')
+    if not CONFIRM in ['yes', 'y']: 
+        print("Ok, bye!")
+        exit()
+
     VOTE_COUNTS = TARGET / 'vote_counts'
     VOTE_COUNTS.mkdir(exist_ok=True, parents=True)
 
