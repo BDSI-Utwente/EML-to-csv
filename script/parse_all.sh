@@ -20,6 +20,6 @@ for SUBFOLDER in "$FOLDER"/*/; do
     if [ -d "$SUBFOLDER" ]; then
         echo "Processing folder: $SUBFOLDER"
         OUTPUT_FOLDER="${SUBFOLDER/raw/clean}"
-        python script/parse.py "$SUBFOLDER" "$OUTPUT_FOLDER" "--force"
+        python script/parse.py "$SUBFOLDER" "$OUTPUT_FOLDER" "--force" "--per_unit"
     fi
 done
